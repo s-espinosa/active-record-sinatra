@@ -17,7 +17,7 @@ class FilmFile < Sinatra::Base
       body "Genre Created"
     else
       status 400
-      body "Missing Name"
+      body "#{genre.errors.full_messages.join(", ")}"
     end
   end
 

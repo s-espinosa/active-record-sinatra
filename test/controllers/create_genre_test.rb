@@ -29,7 +29,7 @@ class CreateGenreTest < Minitest::Test
     post '/genres', { genre: {} }
 
     assert_equal 400, last_response.status
-    assert_equal "Missing Name", last_response.body
+    assert_equal "Name can't be blank", last_response.body
     assert_equal 0, Genre.count
   end
 end
