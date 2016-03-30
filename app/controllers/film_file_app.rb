@@ -9,6 +9,18 @@ class FilmFile < Sinatra::Base
     erb :genres_index
   end
 
+  post '/genres' do
+    genre = Genre.new(params[:genre])
+
+    if genre.save
+      status 200
+      body "Genre Created"
+    else
+      status 400
+      body "Missing Name"
+    end
+  end
+
   get '/directors/:id' do |id|
     @director = Director.find(id)
     erb :director_show
